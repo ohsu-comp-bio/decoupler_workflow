@@ -16,7 +16,7 @@ temp_meta = args[7]
 expr <- readRDS(expr_fname)
 meta <- readRDS(meta_fname)
 
-regulators <- c('STAT2','NR2C2','GATA1','U2AF2','NFATC1','CITED2','RELA','NFE2L1','SETDB1','MXI1','BCLAF1','E2F6','MAFK','MITF','SP2','STAT5A','TFDP1','MAFG','RCOR1','SNW1','NRF1','NR4A1','HSF1','USF1','CEBPZ','ERF','CTCF','MAX','NFYB','HMGN3','E2F4','HDAC8','SP1','BHLHE40','ZBTB33','BRCA1','TRIM28','ZNF143','HMGA1','USF2','GTF2F1','JUND','SMAD5','TAL1','KAT2B','TBL1XR1','STAT6','ATF3','MAZ','SRF','LMNA','PCBP1','NFE2L2','RFX5','SIX5','NR2F2','GATA2','RAD21','FOXM1','CTBP1','STAT1','POLR2G','CHD2','SMARCA4')
+regulators <- c("STAT5A","BACH1", "PCBP1", "NR4A1", "FOXM1", "RCOR1", "GATA1","NFE2L1","MAZ", "HMGA1", "HDAC8", "STAT2", "E2F4","NFE2L2","POLR2G","SMARCA4","AGO1","KAT2B", "SMAD5", "NR2F2", "MITF","LMNA","TRIM28","E2F6","ATF3","MAFG","USF2","CEBPZ","CITED2","CTBP1", "NRF1","TBL1XR1","AGO2","GTF2F1","RELA","MAX", "NFYB","TFDP1", "JUND","STAT6", "STAT1", "SP1","NFATC1","SRF", "SNW1","ERF", "GATA2", "NFYA","BRCA1","HSF1","SRSF3")
 
 sub_meta <- meta[(meta$cell == eval(celltype)) & (meta$target %in% regulators),]
 sub_expr <- expr[,sub_meta$id]
