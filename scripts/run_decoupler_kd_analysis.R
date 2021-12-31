@@ -13,17 +13,21 @@ celltype = args[5]
 results_out = args[6]
 temp_expr = args[7]
 temp_meta = args[8]
+temp_netw = args[9]
 
 expr <- readRDS(expr_fname)
 meta <- readRDS(meta_fname)
+network <- readRDS(netw_fname)
 
 regulators <- c("STAT5A","BACH1", "PCBP1", "NR4A1", "FOXM1", "RCOR1", "GATA1","NFE2L1","MAZ", "HMGA1", "HDAC8", "STAT2", "E2F4","NFE2L2","POLR2G","SMARCA4","AGO1","KAT2B", "SMAD5", "NR2F2", "MITF","LMNA","TRIM28","E2F6","ATF3","MAFG","USF2","CEBPZ","CITED2","CTBP1", "NRF1","TBL1XR1","AGO2","GTF2F1","RELA","MAX", "NFYB","TFDP1", "JUND","STAT6", "STAT1", "SP1","NFATC1","SRF", "SNW1","ERF", "GATA2", "NFYA","BRCA1","HSF1","SRSF3")
 
 sub_meta <- meta[(meta$knockdown_method == eval(knock_down)) & (meta$cell == eval(celltype)) & (meta$target %in% regulators),]
 sub_expr <- expr[,sub_meta$id]
+sub_netw <- network[network$tf %in% regulators,]
 
 saveRDS(sub_meta,file=temp_meta)
 saveRDS(sub_expr,file=temp_expr)
+saveRDS(sub_netw,file=temp_netw)
 
 seed <- 1
 nproc = 4
@@ -52,7 +56,7 @@ design <- tibble(
   opts_list = opts_list,
   bexpr_loc = temp_expr, # benchmark data location
   bmeta_loc = temp_meta, # metadata location
-  source_loc = netw_fname, # set source location
+  source_loc = temp_netw, # set source location
   source_col = "tf", # source name of the gene set source
   target_col = "target", # target name of the set source
   filter_col = "confidence", # column by which we wish to filter
