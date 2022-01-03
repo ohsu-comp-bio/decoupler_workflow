@@ -36,7 +36,9 @@ def message(mes):
 rule all:
     input:
         expand("decoupler_workflow/results/{kd}/{cell}/decoupler_subset_results.rds", zip, kd=KD,cell=CELL_LINE),
-        expand("decoupler_workflow/kd_agnostic_results/{cell}/decoupler_subset_results.rds", cell=set(CELL_LINE))
+        expand("decoupler_workflow/w_kd_plots/{kd}_{cell}_supplemental_figure3.pdf", zip, kd=KD,cell=CELL_LINE),
+        expand("decoupler_workflow/kd_agnostic_results/{cell}/decoupler_subset_results.rds", cell=set(CELL_LINE)),
+        expand("decoupler_workflow/wo_kd_plots/{cell}_supplemental_figure3.pdf",cell=set(CELL_LINE))
 
 
 include: "rules/validation.smk"
