@@ -28,6 +28,24 @@
         "t" : "36:00:00",
         "mem" : 50000
     },
+    "generate_supple_fig_2_w_kd" :
+    {
+        "J" : "generate_supple_fig_2_w_kd",
+        "e" : "logs/{rule}/{wildcards.kd}_{wildcards.cell}_%j.err",
+        "o" : "logs/{rule}/{wildcards.kd}_{wildcards.cell}_%j.out",
+        "c" : 1,
+        "t" : "6:00:00",
+        "mem" : 5000
+    },
+    "generate_supple_fig_2_wo_kd" :
+    {
+        "J" : "generate_supple_fig_2_wo_kd",
+        "e" : "logs/{rule}/{wildcards.cell}_%j.err",
+        "o" : "logs/{rule}/{wildcards.cell}_%j.out",
+        "c" : 1,
+        "t" : "6:00:00",
+        "mem" : 5000
+    },
     "generate_supple_fig_3_w_kd" :
     {
         "J" : "generate_supple_fig_3_w_kd",

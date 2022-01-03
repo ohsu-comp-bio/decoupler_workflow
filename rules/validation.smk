@@ -42,6 +42,34 @@ rule decoupler_wo_kd:
         Rscript ./scripts/run_decoupler_wo_kd_analysis.R {input.expr} {input.meta} {input.network} {params.cell} {output.results_out} {output.temp_expr} {output.temp_meta} {output.temp_netw}
         """
 
+rule generate_supple_fig_2_w_kd:
+    input:
+        results = "decoupler_workflow/results/{kd}/{cell}/decoupler_subset_results.rds"
+    output:
+        fig = "decoupler_workflow/w_kd_plots/{kd}_{cell}_supplemental_figure2.pdf"
+    shell:
+        """
+        mkdir -p decoupler_workflow/w_kd_plots
+        set +u
+        source deactivate
+        source activate decoupler_env
+        Rscript ./scripts/generate_heat_and_jaccard.R {input.results} {output.fig} 
+        """
+
+rule generate_supple_fig_2_wo_kd:
+    input:
+        results = "decoupler_workflow/kd_agnostic_results/{cell}/decoupler_subset_results.rds"
+    output:
+        fig = "decoupler_workflow/wo_kd_plots/{cell}_supplemental_figure2.pdf"
+    shell:
+        """
+        mkdir -p decoupler_workflow/wo_kd_plots
+        set +u
+        source deactivate
+        source activate decoupler_env
+        Rscript ./scripts/generate_heat_and_jaccard.R {input.results} {output.fig} 
+        """
+
 rule generate_supple_fig_3_w_kd:
     input:
         results = "decoupler_workflow/results/{kd}/{cell}/decoupler_subset_results.rds"
