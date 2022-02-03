@@ -25,7 +25,9 @@ conda install -c estabroj89 regulon-enrichment
 ### Activate decoupleR environment and install decoupleR fork with regulon-enrichment method
 ```
 conda activate decoupler_env
+R
 ```
+
 ```r
 library(devtools)
 install_github("JEstabrook/decoupleR", ref='enrich_env') 
