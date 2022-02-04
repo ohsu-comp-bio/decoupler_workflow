@@ -9,25 +9,19 @@ benchmark data in the form of a count table and a corresponding metadata table.
 
 ## Install
 To install necessary environments and run workflow please run:
-### Preparing decoupleR environment
+
+### Prepare decoupleR environment
+
+#### Create conda environment
 ```
 cd envs
 conda env create --file=decouper_env.yaml
 conda activate decoupler_env
-conda install -c bioconda bioconductor-decoupler
-conda deactivate
 ```
-### Preparing regulon-enrichment environment
-```
-conda create -n enrich_env
-conda activate enrich_env 
-conda install -c estabroj89 regulon-enrichment
-```
-### Install decoupleR fork with regulon-enrichment method
 
-#### Activate decoupler environment and install devtools
+#### Conda install important packages
 ```
-conda activate decoupler_env
+conda install -c bioconda bioconductor-decoupler
 conda install -c conda-forge r-devtools
 R
 ```
@@ -44,6 +38,14 @@ install_github('saezlab/decoupleRBench')
 install.packages(‘doMC’)
 install.packages(‘doRNG’)
 install.packages(‘doParallel’)
+quit()
+```
+
+### Prepare regulon-enrichment environment
+```
+conda create -n enrich_env
+conda activate enrich_env 
+conda install -c estabroj89 regulon-enrichment
 ```
 
 
