@@ -15,30 +15,21 @@ To install necessary environments and run workflow please run:
 #### Create conda environment
 ```
 cd envs
-conda env create --file=decouper_env.yaml
+conda env create --file=envs/decoupler_env.yaml
 conda activate decoupler_env
 ```
 
 #### Conda install important packages
 ```
-conda install -c bioconda bioconductor-decoupler
-conda install -c conda-forge r-devtools
+conda install -c bioconda bioconductor-decoupler r-devtools r-domc r-dorng r-doparallel
 R
 ```
 
 #### Activate R and use devtools to download decoupleR packages
 ```r
 library(devtools)
-install_github("JEstabrook/decoupleR", ref='enrich_env') 
 install_github('saezlab/decoupleRBench')
-```
-
-#### Install other necessary packages
-```r
-install.packages(‘doMC’)
-install.packages(‘doRNG’)
-install.packages(‘doParallel’)
-quit()
+install_github("JEstabrook/decoupleR", ref='enrich_env') 
 ```
 
 ### Prepare regulon-enrichment environment
