@@ -6,6 +6,8 @@ from itertools import compress
 
 COMPONENTS = ['local_enrichment', 'quant_nes', 'total_enrichment']
 
+NETWORKS = ['pathway_commons_primary', 'pathway_commons_secondary', 'aracne_cesc', 'aracne_stad', 'aracne_read', 'aracne_paad', 'aracne_lusc', 'aracne_lihc', 'aracne_laml', 'aracne_kirp', 'aracne_kirc', 'aracne_gbm', 'aracne_blca']
+
 with open('cluster.json') as json_file:
     json_dict = json.load(json_file)
 
@@ -23,10 +25,10 @@ def message(mes):
 rule all:
     input:
         # Main pipeline
-        expand(["decoupler_workflow/results/{component}/decoupler_subset_results.rds", 
-            "decoupler_workflow/out_files/{component}_results.tsv", 
-            "decoupler_workflow/out_files/{component}_summary_results.tsv", 
-            "decoupler_workflow/results/{component}/decoupler_priori_weights.tsv",
-            ], component=COMPONENTS)
+        expand(["decoupler_workflow/results/{network}/{component}/decoupler_subset_results.rds", 
+            "decoupler_workflow/out_files/{network}/{component}_results.tsv", 
+            "decoupler_workflow/out_files/{network}/{component}_summary_results.tsv", 
+            "decoupler_workflow/results/{network}/{component}/decoupler_priori_weights.tsv",
+            ], network=NETWORKS, component=COMPONENTS)
 
 include: "rules/decoupler_test_data.smk"

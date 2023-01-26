@@ -7,7 +7,7 @@ args = commandArgs(trailingOnly=TRUE)
 print(args)
 expr_fname = args[1]
 meta_fname = args[2]
-netw_fname = args[3]
+network = args[3]
 results_out = args[4]
 enrich_slot = args[5]
 enr_weights = args[6]
@@ -15,6 +15,8 @@ enr_weights = args[6]
 # Define data, metadata and network path
 seed <- 1
 nproc = 4
+
+netw_fname = sprintf("input_data/%s_decoupler.rds", network)
 
 stats_list = list(c('aucell','wmean','wsum','ulm','viper','gsva','ora','fgsea','udt','mdt','enricher'))
 opts_list <- list(list(
